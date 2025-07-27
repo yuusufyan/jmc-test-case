@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubKategoriController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\KategoriController;
@@ -30,7 +31,7 @@ Route::middleware([
     Route::resource('users', UserController::class);
 });
 
-// Items Router
+// Kategori Router
 Route::middleware([
     'auth',
     RoleMiddleware::class . ':admin',
@@ -38,13 +39,22 @@ Route::middleware([
     Route::resource('kategori', KategoriController::class)->except('show');
 });
 
+// Sub - Kategori Router
 Route::middleware([
     'auth',
     RoleMiddleware::class . ':admin',
 ])->group(function () {
     Route::resource('sub-kategori', SubKategoriController::class)->except('show');
+    Route::get('/get-subkategori/{kategori_id}', [SubKategoriController::class, 'getSubKategori']);
 });
 // Route::get('/kategori/datatable', [KategoriController::class, 'datatable'])->name('kategori.datatable');
 
+// Transaksi Router
+Route::middleware([
+    'auth',
+    // RoleMiddleware::class . ':admin',
+])->group(function () {
+    Route::resource('transaksi', TransaksiController::class)->except('show');
+});
 
 require __DIR__ . '/auth.php';

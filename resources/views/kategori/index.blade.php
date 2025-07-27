@@ -26,7 +26,6 @@
                   <th class="border px-6 py-3">No.</th>
                   <th class="border px-6 py-3">Kode</th>
                   <th class="border px-6 py-3">Nama Kategori</th>
-                  <th class="border px-6 py-3">Batas Harga</th>
                   <th class="border px-6 py-3">Dibuat Oleh</th>
                   <th class="border px-6 py-3">Terakhir Diedit</th>
                   <th class="border px-6 py-3">Dibuat Tanggal</th>
@@ -39,7 +38,6 @@
             <td class="border px-6 py-4">{{ $loop->iteration }}</td>
             <td class="border px-6 py-4">{{ $kategori->kode_kategori }}</td>
             <td class="border px-6 py-4">{{ $kategori->nama_kategori }}</td>
-            <td class="border px-6 py-4">{{ $kategori->batas_harga }}</td>
             <td class="border px-6 py-4">{{ optional($kategori->creator)->name ?? '-' }}</td>
             <td class="border px-6 py-4">{{ optional($kategori->updater)->name ?? '-' }}</td>
             <td class="border px-6 py-4">{{ $kategori->created_at->format('d M Y H:i') }}</td>

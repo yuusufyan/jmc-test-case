@@ -92,6 +92,12 @@ class SubKategoriController extends Controller
         return redirect()->route('sub-kategori.index')->with('success', 'Sub Kategori berhasil diperbarui.');
     }
 
+    public function getSubKategori($kategori_id)
+    {
+        $subKategoris = SubKategori::where('kategori_id', $kategori_id)->get();
+        return response()->json($subKategoris);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
